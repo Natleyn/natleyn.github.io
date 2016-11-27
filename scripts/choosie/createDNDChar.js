@@ -93,15 +93,20 @@ function createPoner(ponerType) {
         alignment: "",
     }
 
+    // rng some shiz
     character.class = rae(dndData.classes);
     character.subclass = rae(dndData.subclass[character.class]); 
     character.race = rwae(dndData.races);
     character.gender = rwae(dndData.gender);
     character.alignment = rae(dndData.alignment);
 
+    // a or an because WE HAVE TO BE GRAMMATICALLY CORRECT
+    var indefiniteArticle = ((/^[AEIOU].*$/.test(character.subclass))?"an":"a");
+
     var msg =   "You should make a " + character.alignment + " " +
-                character.gender + " " + character.race + " who is a " +
-                character.subclass + " " + character.class + "!";
+                character.gender + " " + character.race + " who is " +
+				indefiniteArticle + " " + character.subclass + " " +
+                character.class + "!";
     return msg;
 }
 
