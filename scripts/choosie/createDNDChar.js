@@ -107,7 +107,7 @@ function createPoner(ponerType) {
 
 function command_handler(data){
     if(data.cmd === "dndpone" || data.cmd === "dndpony"){
-        var message = create_poner();
+        var message = createPoner();
         api.Messages.send(data.channelID, message);
     }
 }
