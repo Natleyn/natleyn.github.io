@@ -1,0 +1,16 @@
+.page-container .page-content textarea {
+    display: block;
+    height: 46%;
+    width: 80%;
+    margin: 0 auto;
+    resize: none;
+    padding: 0;
+    box-sizing: border-box;
+}
+.page-container .page-content button {
+    display: block;
+    height: 8%;
+    margin: 0 auto;
+    width: 80%;
+    border: 0;
+}

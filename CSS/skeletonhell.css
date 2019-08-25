@@ -1,0 +1,50 @@
+/* RESETS */
+
+* {
+	margin: 0;
+}
+
+/* GENERIC STYLES */
+
+.page-container {
+	display: block;
+	height: 100vh;
+}
+
+.page-container .page-header {
+    display: block;
+    height: 10%;
+}
+
+.page-container .page-header h1 {
+	display: block;
+	text-align: center;
+	padding-top: 25px;
+}
+
+.page-container .page-content {
+    display: block;
+    height: 90%;
+}
+
+body {
+	background-color: #AEC6FF;
+	text-align: center;
+}
+
+sidebar {
+	background-color: rgb(206, 206, 206);
+	position: absolute;
+	right: 1em;
+	top: 1em;
+	width: 10em;
+}
+
+sidebar .nav-title {
+	font-weight: bold;
+	display: block;
+}
+
+sidebar .nav-element {
+	display: block;
+}

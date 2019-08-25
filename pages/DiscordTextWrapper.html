@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+            <link rel="stylesheet" type="text/css" href="../CSS/skeletonhell.css">
+            <link rel="stylesheet" type="text/css" href="../CSS/DiscordTextWrapper.css">
+            <script>
+                function wrapInAngleBrackets(input, output) {
+                    output = input.replace(/(^|\s+)(http[^\s]+)/g, "$1<$2>");
+                }
+                function wrapPageText() {
+                    wrapInAngleBrackets(document.getElementById("input-text").value, document.getElementById("output-text").value);
+                }
+
+                function wrapInputInAngleBrackets() {
+                    document.getElementById("output-text").value = document.getElementById("input-text").value.replace(/(^|\s+)(http[^\s]+)/g, "$1<$2>");
+                }
+            </script>
+    </head>
+    <body>
+        <div class="page-container">
+            <div class="page-header">
+                <h1>Prevent Links in Discord from embedding</h1>
+            </div>
+            <div class="page-content">
+                <textarea id="input-text" placeholder="Paste your links, one per line, here"></textarea>
+                <button type="submit" onclick="wrapInputInAngleBrackets()">Wrap in angle brackets</button>
+                <textarea id="output-text" placeholder="Output will be put here" readonly></textarea>
+            </div>
+        </div>
+    </body>
+    <sidebar>
+        <h3 class="nav-title">Navigation</h3>
+		<a class="nav-element" href="../index.html">Home</a>
+        <a class="nav-element" href="../pages/DNDPones.html">D&D Pones</a>
+        <a class="nav-element" href="../pages/SS2OreCalc.html">SS2 Ore Calculator</a>
+        <span class="nav-element">Discord Text Wrapper</span>
+    </sidebar>
+</html>
