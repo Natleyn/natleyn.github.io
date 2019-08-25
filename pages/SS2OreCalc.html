@@ -5,44 +5,49 @@
 		<script src="../scripts/calculators/SS2OreCalc.js" defer></script>
 	</head>
 	<body>
-		<div align="center">
-			Ore 1:
-			<select id="o1A">
-				<option value="10">Mithril
-				<option value="25">Orihalcon
-				<option value="20">Dark Matter
-				<option value="1">Bone
-				<option value="2">Scale
-			</select>
-			<input id="o1B" type="text" size="4" maxlength="5" value="0"> Gold, 
-			Grade: <span id="o1G"></span><br>
-			
-			Ore 2: 
-			<select id="o2A">
-				<option value="10">Mithril
-				<option value="25">Orihalcon
-				<option value="20">Dark Matter
-				<option value="1">Bone
-				<option value="2">Scale
-			</select>
-			<input id="o2B" type="text" size="4" maxlength="5" value="0"> Gold, 
-			Grade: <span id="o2G"></span><br>
-			
-			Ore 3: 
-			<select id="o3A">
-				<option value="10">Mithril
-				<option value="25">Orihalcon
-				<option value="20">Dark Matter
-				<option value="1">Bone
-				<option value="2">Scale
-			</select>
-			<input id="o3B" type="text" size="4" maxlength="5" value="0"> Gold, 
-			Grade: <span id="o3G"></span><br>
+		<div class="page-container">
+			<div class="page-header">
+				<h1>Shining Soul 2 Ore Grade Calculator</h1>
+			</div>
+			<div class="page-content">
+				Ore 1:
+				<select id="o1A">
+					<option value="10">Mithril
+					<option value="25">Orihalcon
+					<option value="20">Dark Matter
+					<option value="1">Bone
+					<option value="2">Scale
+				</select>
+				<input id="o1B" type="text" size="4" maxlength="5" value="0"> Gold, 
+				Grade: <span id="o1G"></span><br>
+				
+				Ore 2: 
+				<select id="o2A">
+					<option value="10">Mithril
+					<option value="25">Orihalcon
+					<option value="20">Dark Matter
+					<option value="1">Bone
+					<option value="2">Scale
+				</select>
+				<input id="o2B" type="text" size="4" maxlength="5" value="0"> Gold, 
+				Grade: <span id="o2G"></span><br>
+				
+				Ore 3: 
+				<select id="o3A">
+					<option value="10">Mithril
+					<option value="25">Orihalcon
+					<option value="20">Dark Matter
+					<option value="1">Bone
+					<option value="2">Scale
+				</select>
+				<input id="o3B" type="text" size="4" maxlength="5" value="0"> Gold, 
+				Grade: <span id="o3G"></span><br>
 
-			<input type="button" value="Calculate" onclick="calculateItemGrade()"> <br>
-			<!--<input type="button" value="Calculate" onclick="var temp=(B1.value/A1.value)+(B2.value/A2.value)+(B3.value/A3.value);var temp2=0;if(temp>99)temp2++;if(temp>299)temp2++;if(temp>499)temp2++;alert('Grade of Ore 1: '+Math.floor(B1.value/A1.value)+'\nGrade of Ore 2: '+Math.floor(B2.value/A2.value)+'\nGrade of Ore 3: '+Math.floor(B3.value/A3.value)+'\n\nTotal Points: '+Math.floor(temp)+' (Grade '+temp2+' equipment)');"> -->
-			<span id="finaloretext"></span> <br>
-			<span id="finalitemgrade"></span>
+				<input type="button" value="Calculate" onclick="calculateItemGrade()"> <br>
+				<!--<input type="button" value="Calculate" onclick="var temp=(B1.value/A1.value)+(B2.value/A2.value)+(B3.value/A3.value);var temp2=0;if(temp>99)temp2++;if(temp>299)temp2++;if(temp>499)temp2++;alert('Grade of Ore 1: '+Math.floor(B1.value/A1.value)+'\nGrade of Ore 2: '+Math.floor(B2.value/A2.value)+'\nGrade of Ore 3: '+Math.floor(B3.value/A3.value)+'\n\nTotal Points: '+Math.floor(temp)+' (Grade '+temp2+' equipment)');"> -->
+				<span id="finaloretext"></span> <br>
+				<span id="finalitemgrade"></span>
+			</div>
 		</div>
 	</body>
 
