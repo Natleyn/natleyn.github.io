@@ -48,15 +48,17 @@
             </div>
             <div class="page-content">
                 <textarea id="input-text" placeholder="Paste your links, one per line, here" onkeyup="countInput()"></textarea>
-                <span class="count-text" id="input-counter-box">
-                    <div id="input-counter">Input: 0</div>
-                </span>
-                <span class="wrap-button">
-                    <button type="submit" onclick="wrapInputInAngleBrackets();countOutput();">Wrap in angle brackets</button>
-                </span>
-                <span class="count-text" id="output-counter-box">
-                    <div id="output-counter">Output: 0</div>
-                </span>
+                <div class="middle-section">
+                    <span class="count-text" id="input-counter-box">
+                        <div id="input-counter">Input: 0</div>
+                    </span>
+                    <span class="wrap-button">
+                        <button type="submit" onclick="wrapInputInAngleBrackets();countOutput();">Wrap in angle brackets</button>
+                    </span>
+                    <span class="count-text" id="output-counter-box">
+                        <div id="output-counter">Output: 0</div>
+                    </span>
+                </div>
                 <textarea id="output-text" placeholder="Output will be put here" readonly></textarea>
             </div>
         </div>

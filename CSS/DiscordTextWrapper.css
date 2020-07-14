@@ -8,29 +8,40 @@
     box-sizing: border-box;
 }
 
-.page-container .page-content .count-text {
+.page-container .page-content .middle-section {
+    display: block;
+    font-size: 0;
+    height: 8%;
+}
+
+.page-container .page-content .middle-section .count-text {
     display: inline-block;
     width: 10%;
-    height: 8%;
+    height: 100%;
     margin: 0 auto;
     border: 0;
+    vertical-align: top;
+    position: relative;
+    font-size: 12pt;
+    font-weight: bold;
 }
 
-.page-container .page-content .count-text div {
-    width: 100%;
-    height: 100%;
-    line-height: 100%;
+.page-container .page-content .middle-section .count-text div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.page-container .page-content .wrap-button {
+.page-container .page-content .middle-section .wrap-button {
     display: inline-block;
-    height: 8%;
+    height: 100%;
     margin: 0 auto;
     width: 60%;
     border: 0;
 }
 
-.page-container .page-content .wrap-button button {
+.page-container .page-content .middle-section .wrap-button button {
     width: 100%;
     height: 100%;
 }
