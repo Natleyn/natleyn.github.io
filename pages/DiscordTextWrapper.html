@@ -7,12 +7,37 @@
                 function wrapInAngleBrackets(input, output) {
                     output = input.replace(/(^|\s+)(http[^\s]+)/g, "$1<$2>");
                 }
+
                 function wrapPageText() {
                     wrapInAngleBrackets(document.getElementById("input-text").value, document.getElementById("output-text").value);
                 }
 
                 function wrapInputInAngleBrackets() {
                     document.getElementById("output-text").value = document.getElementById("input-text").value.replace(/(^|\s+)(http[^\s]+)/g, "$1<$2>");
+                }
+
+                function countTextChars(element) {
+                    return document.getElementById(element).value.length;
+                }
+
+                function countInput() {
+                    numChars = countTextChars("input-text");
+                    document.getElementById("input-counter").innerHTML = "Input: " + numChars;
+                    tooManyChars(numChars, "input-counter-box", 2000);
+                }
+
+                function countOutput() {
+                    numChars = countTextChars("output-text");
+                    document.getElementById("output-counter").innerHTML = "Output: " + countTextChars("output-text");
+                    tooManyChars(numChars, "output-counter-box", 2000);
+                }
+
+                function tooManyChars(chars, elementToChange, charLimit){
+                    if(chars > charLimit) {
+                        document.getElementById(elementToChange).style.background = "red";
+                    } else {
+                        document.getElementById(elementToChange).style.background = "#AEC6FF";
+                    }
                 }
             </script>
     </head>
@@ -22,8 +47,16 @@
                 <h1>Prevent Links in Discord from embedding</h1>
             </div>
             <div class="page-content">
-                <textarea id="input-text" placeholder="Paste your links, one per line, here"></textarea>
-                <button type="submit" onclick="wrapInputInAngleBrackets()">Wrap in angle brackets</button>
+                <textarea id="input-text" placeholder="Paste your links, one per line, here" onkeyup="countInput()"></textarea>
+                <span class="count-text" id="input-counter-box">
+                    <div id="input-counter">Input: 0</div>
+                </span>
+                <span class="wrap-button">
+                    <button type="submit" onclick="wrapInputInAngleBrackets();countOutput();">Wrap in angle brackets</button>
+                </span>
+                <span class="count-text" id="output-counter-box">
+                    <div id="output-counter">Output: 0</div>
+                </span>
                 <textarea id="output-text" placeholder="Output will be put here" readonly></textarea>
             </div>
         </div>

@@ -7,10 +7,31 @@
     padding: 0;
     box-sizing: border-box;
 }
-.page-container .page-content button {
-    display: block;
+
+.page-container .page-content .count-text {
+    display: inline-block;
+    width: 10%;
     height: 8%;
     margin: 0 auto;
-    width: 80%;
     border: 0;
 }
+
+.page-container .page-content .count-text div {
+    width: 100%;
+    height: 100%;
+    line-height: 100%;
+}
+
+.page-container .page-content .wrap-button {
+    display: inline-block;
+    height: 8%;
+    margin: 0 auto;
+    width: 60%;
+    border: 0;
+}
+
+.page-container .page-content .wrap-button button {
+    width: 100%;
+    height: 100%;
+}
+
