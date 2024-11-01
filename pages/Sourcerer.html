@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+            <link rel="stylesheet" type="text/css" href="../CSS/skeletonhell.css">
+            <link rel="stylesheet" type="text/css" href="../CSS/Sourcerer.css">
+            <script>
+                  function permission_to_swap(if_asking, location) {
+                    return (!if_asking || (if_asking && confirm("Potential match detected: " + location + "\nGo to suspected page?")));
+                  }
+                  
+                  function sourcerer() {
+                    let ask_for_confirmation = true;
+                    let cur_url = document.getElementById("image-name-url").value;
+                    let mod_url = cur_url.match(/\S+\/([^\/?]+)(\?.+)?/)[1];
+                    mod_url = mod_url.match(/(SPOILER_)?(.*)/)[2]; /* ignore spoiler at the start for discord images */
+                    /* FurAffinity */
+                    if (mod_url.match(/^\d+\.([^_]+)[\w\[\]\._-]+\.\w{3}/) != null) {
+                      if(permission_to_swap(ask_for_confirmation, "Furaffinity")){
+                        window.location = "https://furaffinity.net/user/" + mod_url.match(/^\d+\.([^_]+)([\w\[\]\._-]+)\.\w{3}/)[1];
+                        alert ( "Filename details: " + mod_url.match(/^\d+\.([^_]+)([\w\._]+)\.\w{3}/)[2] );
+                        return;
+                      }
+                    /* MD5 hash filenames */
+                    } else if (mod_url.match(/^(?:sample_)?(?:__.*__)?([a-f0-9]{32})\.[A-Za-z]{3,4}$/) != null) {
+                      /* e621 */
+                      if(permission_to_swap(ask_for_confirmation, "(1/3): e621")) {
+                        window.location = "http://e621.net/post?tags=md5%3A" + mod_url.match(/^(?:sample_)?([a-f0-9]{32})\.[A-Za-z]{3,4}$/)[1];
+                        return;
+                      }
+                      /* Gelbooru */
+                      if(permission_to_swap(ask_for_confirmation, "(2/3): Gelbooru")) {
+                        window.location = "https://gelbooru.com/index.php?page=post&s=list&tags=md5%3A" + mod_url.match(/^(?:sample_)?([a-f0-9]{32})\.[A-Za-z]{3,4}$/)[1];
+                        return;
+                      }
+                      
+                      /* Rule34.xxx */
+                      if(permission_to_swap(ask_for_confirmation, "(3/3): Rule34.xxx")) {
+                        window.location = "https://rule34.xxx/index.php?page=post&s=list&tags=md5%3A" + mod_url.match(/^(?:sample_)?([a-f0-9]{32})\.[A-Za-z]{3,4}$/)[1];
+                        return;
+                      }
+                      
+                      /* Danbooru */
+                      if(permission_to_swap(ask_for_confirmation, "Double underscore: Danbooru")) {
+                        window.location = "https://danbooru.com/index.php?page=post&s=list&tags=md5%3A" + mod_url.match(/^(?:sample_)?(?:__.*__)?([a-f0-9]{32})\.[A-Za-z]{3,4}$/)[1];
+                        return;
+                      }
+                    
+                    }
+                    /* Derpibooru */
+                    else if (mod_url.match(/^(\d{4,7})(__[\w\+-]*)?\.\w{3,4}$/) != null) {
+                      if(permission_to_swap(ask_for_confirmation, "Derpibooru")) {
+                        window.location = "https://derpibooru.org/" + mod_url.match(/^(\d{4,7})(__[\w\+-]*)?\.\w{3,4}$/)[1];
+                        return;
+                      }
+                    }
+                    /* Pixiv */
+                    else if (mod_url.match(/^(\d{7,9})_p\d+(_master1200)?\.\w{3,4}$/) != null) {
+                      if(permission_to_swap(ask_for_confirmation, "Pixiv")) {
+                        window.location = "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=" + mod_url.match(/(\d{7,9})_p\d+(_master1200)?\.\w{3,4}/)[1];
+                        return;
+                      }
+                    }
+                    else if (mod_url.match(/^\d+_[A-Za-z0-9]+_[A-Za-z0-9-_\.]+\.\w{3,4}$/) != null) {
+                      /* Newgrounds */
+                      if(mod_url.match(/^\d+_[A-Za-z0-9]+_[A-Za-z0-9-]+\.\w{3,4}$/) != null) {
+                        if(permission_to_swap(ask_for_confirmation, "(1/2): Newgrounds")) {
+                          window.location = "http://www.newgrounds.com/art/view/" + mod_url.match(/\d+_([A-Za-z0-9]+)_[A-Za-z0-9-]+\.\w{3,4}$/)[1] + "/" + mod_url.match(/\d+_[A-Za-z0-9]+_([A-Za-z0-9-]+)\.\w{3,4}$/)[1];
+                          return;
+                        }
+                      }
+                      /* Inkbunny */
+                      if (mod_url.match(/^\d{7,9}_([a-zA-Z0-9]+)_[\w_\.-]+\.\w{3,4}$/) != null) {
+                        if(permission_to_swap(ask_for_confirmation, "(2/2): Inkbunny")) {
+                          window.location = "https://inkbunny.net/" + mod_url.match(/\d{7,9}_([a-zA-Z0-9]+)_[\w_\.-]+\.\w{3,4}/)[1];
+                          alert ( "Image text: " + mod_url.match(/\d{7,9}_[a-zA-Z0-9]+_([\w_\.-]+)\.\w{3,4}/)[1] );
+                          return;
+                        }
+                      }
+                    }
+                    /* Imgur */
+                    else if ( mod_url.match(/^[A-Za-z0-9]{5,7}\.\w{3,4}$/) != null) {
+                      if(permission_to_swap(ask_for_confirmation, "Imgur")) {
+                        window.location = "http://imgur.com/" + mod_url.match(/([A-Za-z0-9]{5,7})\.\w{3,4}$/)[1];
+                        return;
+                      }
+                    }
+
+                    /* DeviantArt */
+                    else if(mod_url.match(/^[A-Za-z0-9_-]+_d[A-Za-z0-9]{6}\.\w{3,4}$/) != null) {
+                      if(permission_to_swap(ask_for_confirmation, "DeviantArt")) {
+                        window.location = "http://fav.me/" + mod_url.match(/^[A-Za-z0-9_-]+_(d[A-Za-z0-9]{6})\.\w{3,4}$/)[1];
+                        return;
+                      }
+                    }
+                    /* Aryion */
+                    else if (mod_url.match(/^\w+-\d+-.*\.\w{3,4}$/) != null) {
+                      if(permission_to_swap(ask_for_confirmation, "Aryion")) {
+                        window.location = "https://aryion.com/g4/view/" + mod_url.match(/^\w+-(\d+)-.*\.\w{3,4}$/)[1];
+                        return;
+                      }
+                      
+                      if(permission_to_swap(ask_for_confirmation, "Hentai-Foundry")) {
+                        window.location = "https://www.hentai-foundry.com/pictures/user/" + mod_url.match(/^(\w+)-\d+-.*\.\w{3,4}$/)[1] + "/" + mod_url.match(/^\w+-(\d+)-.*\.\w{3,4}$/)[1] + "/";
+                        return;
+                      }
+                    }
+
+
+                    /*} else if () {*/
+                    if(confirm("Unknown format: " +  mod_url + ". Try SauceNao?")) {
+                      window.location = "https://saucenao.com/search.php?url=" + encodeURIComponent(cur_url);
+                      return;
+                    }
+                    if(confirm("Unknown format: " + mod_url + ". Try Google?")) {
+                      window.location = "https://lens.google.com/uploadbyurl?url=" + encodeURIComponent(cur_url) + "&safe=off";
+                    }
+                    
+                    /* TODO: */
+
+                    /* Weasyl */
+                  }
+            </script>
+    </head>
+    <body>
+        <div class="page-container">
+            <div class="page-header">
+                <h1>Sourcerer - Named-based Image Sourcing</h1>
+            </div>
+            <div class="page-content">
+                <textarea id="image-name-url" placeholder="Paste your image name or url here"></textarea>
+                <button type="submit" onclick="">Send to SauceNao</button>
+                <button type="submit" onclick="">Send to Google Images</button>
+                <button type="submit" onclick="sourcerer()">Analyze</button>
+                <table hidden>
+                  <tr>
+                    <th>Website</th>
+                    <th>Source Link</th>
+                    <th>Notes</th>
+                  </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+    <sidebar>
+        <h3 class="nav-title">Navigation</h3>
+        <a class="nav-element" href="../index.html">Home</a>
+        <a class="nav-element" href="../pages/DNDPones.html">D&D Pones</a>
+        <a class="nav-element" href="../pages/SS2OreCalc.html">SS2 Ore Calculator</a>
+     		<a class="nav-element" href="../pages/DiscordTextWrapper.html">Discord Text Wrapper</a>
+        <span class="nav-element">Sourcerer</span>
+        <br />
+        <h3>Sourcerer Links</h3>
+        <h5>if you only have the image:</h5>
+        <a class="nav-element" href="https://images.google.com/">Link to Google Reverse Image Search</a>
+        <a class="nav-element" href="https://saucenao.com/">Link to SauceNAO</a>
+    </sidebar>
+</html>

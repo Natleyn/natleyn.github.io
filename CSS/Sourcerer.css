@@ -1,16 +1,15 @@
-.page-container .page-content textarea {
+.page-container .page-content #image-name-url {
     display: block;
-    height: 45%;
-    width: 80%;
+    width: 60%;
     margin: 0 auto;
     resize: none;
     padding: 0;
     box-sizing: border-box;
 }
 .page-container .page-content button {
-    display: block;
-    height: 8%;
+    display: inline;
+    height: 5%;
     margin: 0 auto;
-    width: 80%;
+    width: 20%;
     border: 0;
 }
